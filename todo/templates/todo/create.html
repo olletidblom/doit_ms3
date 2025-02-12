@@ -1,0 +1,9 @@
+<h1> Create Form</h1>
+
+<form method='POST' action=''> 
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="button" type="submit" value="Create">
+    <button type="button" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
+</form>
+
