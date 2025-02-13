@@ -1,10 +1,11 @@
 
 body {
     overflow: hidden;
+    min-height: 100vh;
     background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,37,174,1) 0%, rgba(250,237,56,1) 36%, rgba(241,147,55,1) 53%, rgba(250,237,56,1) 99%);
-    background-size: auto;
+    background-size: cover;
     background-position: 0% 0%;
-    background-repeat: repeat;
+    background-repeat:no-repeat;
     background-color: rgba(0,0,0,0);
 }
 
