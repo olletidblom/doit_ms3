@@ -1,28 +1,87 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock extra_css%}
 {% block title%}
     Todo List
 {% endblock title%}
 
+
+
 {% block content %}
-<table>
-    <tr>
-        <th>Item</th>
-        <th></th>
-    </tr>
-    {% for task in tasks %}
-    <tr>
-        <td>{{task.title}}</td>
-        <td><a href="{% url 'task' task.id %}"> View </a></td>
-        <td><a href="{% url 'edit_task' task.id %}"> Edit </a></td>
-        <td><a href="{% url 'delete_task' task.id %}"> Delete </a></td>
-    </tr>
-    {% empty %}
-        <h3> No items in list </h3>
-    {% endfor %}
-
-</table> 
-
-<button type="button" onclick="window.location.href='{% url 'create_task' %}'">Create New</button>
-
-{% endblock content %}
+<section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
+            <div class="card-body  justify-content-center py-4 px-4 px-md-5">
+  
+              <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
+                <i class="fas fa-check-square lg"></i>
+                <u>DO IT</u>
+              </p>
+  
+        
+  
+              <hr class="my-4">
+  
+              <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+                <p class="small mb-0 me-2 text-muted">Filter</p>
+                <select data-mdb-select-init>
+                  <option value="1">All</option>
+                  <option value="2">Completed</option>
+                  <option value="3">Active</option>
+             
+                </select>
+                <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
+                <select data-mdb-select-init>
+                  <option value="1">Added date</option>
+                  <option value="2">Due date</option>
+                </select>
+              </div>
+              {% for task in tasks %}
+              <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
+                <li
+                  class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+                  <div class="form-check">
+                    <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
+                      aria-label="..." checked />
+                  </div>
+                </li>
+                <li
+                  class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+                  <p class="lead fw-normal mb-0">{{task.title}}</p>
+                </li>
+                <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
+                  <div class="d-flex flex-row justify-content-end mb-1">
+                    <a href="{% url 'edit_task' task.id %}" class="text-info" data-mdb-tooltip-init title="Edit"><i
+                        class="fas fa-pencil-alt me-3"></i></a>
+                    <a href="{% url 'delete_task' task.id %}" class="text-danger" data-mdb-tooltip-init title="Delete"><i
+                        class="fas fa-trash-alt"></i></a>
+                  </div>
+                  <div class="text-end text-muted">
+                    <a href="#!" class="text-muted" data-mdb-tooltip-init title="Created date">
+                      <p class="small mb-0"><i class="fas fa-info-circle me-2"></i> 
+                        {%if task.updated_at%}
+                        {{ task.updated_at|date:"F j, Y" }}
+                        {%else%}
+                        {{ task.created_at|date:"F j, Y" }}</p>
+                        {% endif %}
+                    </a>
+                  </div>
+                </li>
+              </ul>
+              {% empty %}
+              <h3> No items in list </h3>
+              {% endfor %}
+             
+            </div>
+          </div>
+          <button type="button" onclick="window.location.href='{% url 'create_task' %}'">Create New</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock content %}
