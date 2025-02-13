@@ -1,1 +1,17 @@
-<h1>Task : {{task}}</h1>
+{% extends 'base.html' %}
+
+{% block title%}
+    {{task.title}}
+{% endblock title%}
+
+{% block content %}
+<h1>{{ task.title }}</h1>
+    
+<p><strong>Description:</strong> {{ task.description }}</p>
+<p><strong>Category:</strong> {{ task.category }}</p>
+<p><strong>Completed:</strong> {% if task.completed %} ✅ Yes {% else %} ❌ No {% endif %}</p>
+<p><strong>Created at:</strong> {{ task.created_at }}</p>
+<p><strong>Last updated:</strong> {{ task.updated_at }}</p>
+</form>
+
+{% endblock content%}

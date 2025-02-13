@@ -1,5 +1,11 @@
-<h1>Delete Task</h1>
+{% extends 'base.html' %}
 
+{% block title %}
+    Delete Task
+{% endblock title %}
+
+{% block content %}
+<h1> Delete Task </h1>
 <form method='POST'> 
     {% csrf_token %}
     <p>Are you shure you want to delete "<strong>{{task}}</strong>"?</p>
@@ -7,4 +13,4 @@
     <input class="button" type="submit" value="Delete">
     <button type="button" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
 </form>
-
+{% endblock content %}
