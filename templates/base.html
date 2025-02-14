@@ -22,9 +22,24 @@
 
 <body>
     {% include "./includes/header.html" %}
-    <main  class="flex-shrink-0 main-bg">
-        {% block content %}
-        {% endblock content %}
+    <main class="container">
+        <div class="row justify-content-center ">
+            <div class="col-3 logo">
+                {% block logo %}
+                
+                {% endblock logo %}
+            </div>
+            <div class="w-100"></div>
+
+            <div class="col todo"> 
+                {% block content %}
+                {% endblock content %}</div>
+            
+            </div>
+       
+            
+        </div>
+      
     </main>
     {% include "./includes/footer.html" %}
     {% block onload_js %}
