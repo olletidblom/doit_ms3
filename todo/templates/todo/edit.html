@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Edit task
+{% endblock title %}
+
+{% block content %}
+
+    <div>
+        <h1>{{edit_task.title}}</strong> </h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="btn btn-primary" type="submit" value="Save Changes">
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
+        </form>
+    </div>
+
+{% endblock content %}

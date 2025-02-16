@@ -29,9 +29,10 @@
       {% for task in tasks %}
       <tr>
           <td><a href="{% url 'task' task.id %}">{{task.title}}</a></td>
-         
-          <td><a href="{% url 'edit_task' task.id %}"> Edit </a></td>
-          <td><a href="{% url 'delete_task' task.id %}"> Delete </a></td>
+
+          <td><a href="{% url 'edit_task' task.id %}" class="text-info" data-mdb-tooltip-init title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a></td>
+          
+          <td><a href="{% url 'delete_task' task.id %}" class="text-danger" data-mdb-tooltip-init title="Delete todo"><i class="fas fa-trash-alt"></i></a></td>
       </tr>
       {% empty %}
           <h3> No items in list </h3>
