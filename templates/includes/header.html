@@ -9,7 +9,8 @@
 
       <!-- "Account" aligned to the right -->
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="#">Account</a>
+        <a class="nav-link" href="{% url 'categorys' %}">My Categorys</a>
+        <a class="nav-link" href="{% url 'profile' request.user.id %}">Account</a>
       </div>
     </div>
   </nav>

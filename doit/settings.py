@@ -47,10 +47,13 @@ INSTALLED_APPS = [
     
     #Apps
     'todo', 
+    'profiles',
     
     #Extras
     'crispy_forms',
     'crispy_bootstrap5',
+    'djrichtextfield',
+    'django_resized'
 ]
 
 SITE_ID = 1

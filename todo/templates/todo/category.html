@@ -3,10 +3,11 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-{% endblock extra_css%}
-{% block title%}
-    Todo List
-{% endblock title%}
+{% endblock extra_css%} 
+
+{% block title %}
+    Create Category
+{% endblock title %}
 
 {% block logo %}
 <img src="{% static 'images/doit.png' %}" alt="Logo">
@@ -26,13 +27,14 @@
           <th>Item</th>
           <th></th>
       </tr>
-      {% for task in tasks %}
+      {% for category in categories %}
       <tr>
-          <td><a href="{% url 'task' task.id %}">{{task.title}}</a></td>
+          <td>{{category.name}}</td>
 
-          <td><a href="{% url 'edit_task' task.id %}" class="text-info" data-mdb-tooltip-init title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a></td>
+         
+          <td><a href="{% url 'edit_category' category.name %}" class="text-info" data-mdb-tooltip-init title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a></td>
           
-          <td><a href="{% url 'delete_task' task.id %}" class="text-danger" data-mdb-tooltip-init title="Delete todo"><i class="fas fa-trash-alt"></i></a></td>
+          <td><a href="{% url 'delete_category' category.name %}" class="text-danger" data-mdb-tooltip-init title="Delete todo"><i class="fas fa-trash-alt"></i></a></td>
       </tr>
       {% empty %}
           <h3> No items in list </h3>
@@ -41,6 +43,7 @@
   </table> 
   </table> 
   
-  <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'create_task' %}'">Create New</button>
+  <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'create_category' %}'">Create New</button>
+  <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
 {% endblock content %}
 

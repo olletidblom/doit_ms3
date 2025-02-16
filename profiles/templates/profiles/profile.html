@@ -2,19 +2,19 @@
 {% load static %}
 
 {% block title %}
-    Create Task
+    Edit task
 {% endblock title %}
+
 
 {% block content %}
 
     <div>
-        <h1>Create Task</h1>
-        <form method="POST" action="">
+        <h1>Account Settings</strong> </h1>
+        <form method="POST" >
             {% csrf_token %}
             {{ form|crispy }}
-            <input class="btn btn-primary" type="submit" value="Create">
+            <input class="btn btn-primary" type="submit" value="Save Changes">
             <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
-           
         </form>
     </div>
 
