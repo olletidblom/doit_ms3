@@ -12,38 +12,46 @@
 {% block logo %}
 <img src="{% static 'images/doit.png' %}" alt="Logo">
 {% endblock logo %}
-
 {% block content %}
 
+<div class="todo-container">
+    <article class="task-list">
+        <p class="h1 text-center">
+            <i class="fas fa-check-square lg"></i>
+            <u>Categorys:</u>
+        </p>
 
-  <p class="h1 text-center">
-    <i class="fas fa-check-square lg"></i>
-    <u>To Do:</u>
-  </p>
-
-
-  <table>
-      <tr>
-          <th>Item</th>
-          <th></th>
-      </tr>
-      {% for category in categories %}
-      <tr>
-          <td>{{category.name}}</td>
-
-         
-          <td><a href="{% url 'edit_category' category.name %}" class="text-info" data-mdb-tooltip-init title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a></td>
-          
-          <td><a href="{% url 'delete_category' category.name %}" class="text-danger" data-mdb-tooltip-init title="Delete todo"><i class="fas fa-trash-alt"></i></a></td>
-      </tr>
-      {% empty %}
-          <h3> No items in list </h3>
-      {% endfor %}
-  
-  </table> 
-  </table> 
-  
-  <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'create_category' %}'">Create New</button>
-  <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
+        <ul class="d-flex flex-column align-items-center">
+            {% for category in categories %}
+            
+            <li class="task-item row align-items-center "> 
+                <div class="col-4 text-start">
+                   
+                    <div class="task-content">
+                        {{category.name}}
+                    </div>
+                    
+                </div>
+                {% if task.category %}
+                    <div class="col-4 task-category text-center"> 
+                      {{task.category}}
+                    </div>
+                {% endif %}
+                <div class="col-4 task-actions text-end">
+                    <a href="{% url 'edit_category' category.pk %}" class="text-info" data-mdb-tooltip-init title="Edit Category"><i class="fas fa-pencil-alt me-3"></i></a>
+                    <a href="{% url 'delete_category' category.pk %}" class="text-danger" data-mdb-tooltip-init title="Delete Category"><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    
+        <div class="d-flex justify-content-center gap-3">
+            <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'create_category' %}'">Create New</button>
+            <button type="button" class="btn btn-danger" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
+        </div>
+        
+    </article>
+</div>
 {% endblock content %}
+
 

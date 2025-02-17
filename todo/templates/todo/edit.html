@@ -8,12 +8,14 @@
 {% block content %}
 
     <div>
-        <h1>{{edit_task.title}}</strong> </h1>
+        <h1><strong>{{edit_task.title}}</strong> </h1>
         <form method="POST" action="">
             {% csrf_token %}
             {{ form|crispy }}
-            <input class="btn btn-primary" type="submit" value="Save Changes">
-            <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
+            <div class="d-flex justify-content-center gap-3">
+                <input class="btn btn-primary" type="submit" value="Save">
+                <button type="button" class="btn btn-danger" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
+            </div>
         </form>
     </div>
 

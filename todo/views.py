@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.views.generic import ListView
+from django.views.generic import ListView, View
 from django.views.generic import DetailView
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -41,7 +41,7 @@ class createTask(LoginRequiredMixin, CreateView):
     
 class editTask(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = '__all__'
+    form_class = TaskForm
     success_url = reverse_lazy('tasks')
     context_object_name = 'edit_task'
     template_name = 'todo/edit.html'
@@ -58,18 +58,24 @@ class deleteTask(LoginRequiredMixin, DeleteView):
 class createCategory(LoginRequiredMixin, CreateView):
     model = Category
     form_class = CategoryForm
-    success_url = reverse_lazy('category')  # Redirect to task list after creating a category
+    success_url = reverse_lazy('categorys')  # Redirect to task list after creating a category
     template_name = 'todo/create_category.html'  # Create this template file
 
     def form_valid(self, form):
         form.instance.user = self.request.user  # Assign the current user to the category
         return super().form_valid(form)
     
+    def form_invalid(self, form):
+        context = self.get_context_data(form=form)
+        context['error_message'] = "Please correct the errors below."
+        return self.render_to_response(context)
+    
+    
 class deleteCategory(LoginRequiredMixin, DeleteView):
     model = Category
     context_object_name = 'category'
     template_name = 'todo/delete_category.html'  # Create this template
-    success_url = reverse_lazy('tasks')  # Redirect to task list after deleting
+    success_url = reverse_lazy('categorys')  # Redirect to task list after deleting
 
     def get_queryset(self):
         # Ensure users can only delete their own categories
@@ -87,8 +93,13 @@ class categoryList(LoginRequiredMixin, ListView):
     
 class editCategory(LoginRequiredMixin, UpdateView):
     model = Category
-    fields = '__all__'
+    fields = ['name']  # Specify fields as a list
     
     context_object_name = 'edit_category'
     template_name = 'todo/edit_category.html'
         
+        
+class DeleteFinishedTasks(LoginRequiredMixin, View):
+    def post(self, request):
+        Task.objects.filter(user=request.user, completed=True).delete()
+        return redirect('tasks')

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Create Task
+{% endblock title %}
+
+{% block content %}
+
+    <div>
+        <h1>Create Task</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ form|crispy }}
+            {% if error_message %}
+                <p class="text-danger">{{ error_message }}</p>
+            {% endif %}    
+            <input class="btn btn-primary" type="submit" value="Create">
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'categorys' %}'">Return</button>
+           
+        </form>
+    </div>
+
+{% endblock content %}

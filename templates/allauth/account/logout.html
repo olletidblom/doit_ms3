@@ -1,7 +1,13 @@
 {% extends "account/base_manage.html" %}
+{% load static %}
 {% load i18n %}
 
 {% block title %}{% trans "Sign Out" %}{% endblock %}
+
+
+{% block logo %}
+<img src="{% static 'images/doit.png' %}" alt="Logo">
+{% endblock logo %}
 
 {% block content %}
 <div class="container text-center">
@@ -14,7 +20,7 @@
     {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
     {% endif %}
-    <button type="submit" class="btn btn-primary w-25">{% trans 'Sign Out' %}</button>
+    <button type="submit" class="btn btn-danger w-25">{% trans 'Sign Out' %}</button>
   </form>
 </div>
 

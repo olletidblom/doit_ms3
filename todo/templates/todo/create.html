@@ -12,9 +12,10 @@
         <form method="POST" action="">
             {% csrf_token %}
             {{ form|crispy }}
+        <div class="d-flex justify-content-center gap-3">
             <input class="btn btn-primary" type="submit" value="Create">
-            <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
-           
+            <button type="button" class="btn btn-danger" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
+        </div>
         </form>
     </div>
 

@@ -17,7 +17,11 @@
     {% block extra_css %}
     {% endblock extra_css %}
 
-    <title> {{title}}</title>
+    <title>
+    {% block title%}
+        
+    {% endblock title%}
+    </title>
 </head>
 
 <body>
@@ -31,7 +35,7 @@
             </div>
             <div class="w-100"></div>
 
-            <div class="col todo"> 
+            <div class="todo"> 
                 {% block content %}
                 {% endblock content %}</div>
             

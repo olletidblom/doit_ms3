@@ -14,33 +14,50 @@
 
 {% block content %}
 
+<div class="todo-container">
+    <article class="task-list">
+        <h1 class="h1 text-center">
+            <i class="fas fa-check-square lg"></i>
+            To Do :
+        </h1>
 
-  <p class="h1 text-center">
-    <i class="fas fa-check-square lg"></i>
-    <u>To Do:</u>
-  </p>
-
-
-  <table>
-      <tr>
-          <th>Item</th>
-          <th></th>
-      </tr>
-      {% for task in tasks %}
-      <tr>
-          <td><a href="{% url 'task' task.id %}">{{task.title}}</a></td>
-
-          <td><a href="{% url 'edit_task' task.id %}" class="text-info" data-mdb-tooltip-init title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a></td>
-          
-          <td><a href="{% url 'delete_task' task.id %}" class="text-danger" data-mdb-tooltip-init title="Delete todo"><i class="fas fa-trash-alt"></i></a></td>
-      </tr>
-      {% empty %}
-          <h3> No items in list </h3>
-      {% endfor %}
-  
-  </table> 
-  </table> 
-  
-  <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'create_task' %}'">Create New</button>
+        <ul class="d-flex flex-column align-items-center">
+            {% for task in tasks %}
+            
+            <li class="task-item row align-items-center "> 
+                <div class="col-4 text-start">
+                    {% if task.completed %}
+                        <div class="task-content">
+                            <i><s><a href="{% url 'task' task.id %}">{{ task.title }}</a> <i class="fa-solid fa-check"></i></s></i>
+                        </div>
+                    {% else %}
+                        <div class="task-content">
+                            <a href="{% url 'task' task.id %}">{{ task.title }}</a>
+                        </div>
+                    {% endif %}
+                </div>
+                {% if task.category %}
+                    <div class="col-4 task-category text-center"> 
+                      {{task.category}}
+                    </div>
+                {% endif %}
+                <div class="col-4 task-actions text-end">
+                    <a href="{% url 'edit_task' task.id %}" class="text-info" data-mdb-tooltip-init title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
+                    <a href="{% url 'delete_task' task.id %}" class="text-danger" data-mdb-tooltip-init title="Delete todo"><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    
+        <div class="d-flex justify-content-center gap-3">
+            <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'create_task' %}'">Create New</button>
+            
+            <form method="POST" action="{% url 'delete_finished_tasks' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Delete Finished</button>
+            </form>
+        </div>
+        
+    </article>
+</div>
 {% endblock content %}
-

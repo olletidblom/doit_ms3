@@ -11,5 +11,6 @@
     <form method="POST">
         {% csrf_token %}
         <input class="btn btn-danger" type="submit" value="Delete">
-        <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
+        <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'categorys' %}'">Return</button>
     </form>
+{% endblock %}

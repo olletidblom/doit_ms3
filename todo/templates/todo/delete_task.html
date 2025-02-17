@@ -5,13 +5,27 @@
     Delete Task
 {% endblock title %}
 
-{% block content %}
-<h1> Delete Task </h1>
-<form method='POST'> 
-    {% csrf_token %}
-    <p>Are you shure you want to delete "<strong>{{task}}</strong>"?</p>
+{% block logo %}
+<img src="{% static 'images/doit.png' %}" alt="Logo">
+{% endblock logo %}
 
-    <input class="button" type="submit" value="Delete">
-    <button type="button" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
-</form>
+{% block content %}
+
+<div class="row justify-content-center text-center">
+    <div class="col-md-12">
+        <h1><strong>Delete Item</strong></h1>
+    </div>
+
+    <div class="col-md-12 mb-3">
+        <p>Are you sure you want to delete "<strong>{{ task }}</strong>"?</p>
+    </div>
+
+    <div class="d-flex justify-content-center gap-3">
+        <form method="POST">
+            {% csrf_token %}
+            <input class="btn btn-danger w-100 mb-2" type="submit" value="Delete">
+            <button type="button" class="btn btn-primary w-100" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
+        </form>
+    </div>
+</div>
 {% endblock content %}
