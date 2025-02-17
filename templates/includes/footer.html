@@ -1,15 +1,16 @@
 {% load static %}
 
-<footer class="fixed-bottom py-3">
-    <div class="container">
-        {% if request.user.is_authenticated %}
-            <div class="d-flex justify-content-around align-items-center">  <p class="mb-0 text-muted">Signed in as: <strong>{{ user }}</strong></p>
-                <a class="btn btn-link text-muted btn-sm" href="/accounts/logout">Log Out</a>
-            </div>
-        {% else %}
-            <div class="d-flex justify-content-center"> <a class="btn btn-link text-muted btn-sm" href="/accounts/login">Log In</a>
-            </div>
-        {% endif %}
-    </div>
+<footer class="fixed-bottom py-3 bg-body-tertiary">  <div class="container">
+    {% if request.user.is_authenticated %}
+        <div class="d-flex justify-content-around align-items-center">
+            <p class="mb-0 text-muted">Signed in as: <strong>{{ user }}</strong></p>
+            <a class="btn btn-link text-muted btn-sm" href="/accounts/logout">Log Out</a>
+        </div>
+    {% else %}
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-link text-muted btn-sm" href="/accounts/login">Log In</a>
+        </div>
+    {% endif %}
+</div>
 </footer>
 
