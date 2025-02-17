@@ -2,14 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Category(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='categories')
-    name = models.CharField(max_length=255, unique=True) # or unique_together if you want same name for diferent users
+    name = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['user', 'name'], name='unique_user_category')
-        ]
-
+        unique_together = ['name', 'user']  # Add this line
 
     def __str__(self):
         return self.name
