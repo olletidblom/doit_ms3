@@ -21,23 +21,25 @@
             Categorys:
         </h1>
 
-        <ul class="d-flex flex-column align-items-center">
+        <ul class="task-list">
             {% for category in categories %}
             
-            <li class="task-item row align-items-center "> 
-                <div class="col-4 text-start">
+            <li class="task-item"> 
+                <div class="task-title">
                    
                     <div class="task-content">
                         {{category.name}}
                     </div>
-                    
                 </div>
                 {% if task.category %}
-                    <div class="col-4 task-category text-center"> 
-                      {{task.category}}
-                    </div>
+                <div class="task-category"> 
+                    {{ task.category }}
+                </div>
+                {% else %}
+                    <div class="task-category"></div>  <!-- Empty div to maintain spacing -->
                 {% endif %}
-                <div class="col-4 task-actions text-end">
+              
+                <div class="task-actions">
                     <a href="{% url 'edit_category' category.pk %}" class="text-info" data-mdb-tooltip-init title="Edit Category"><i class="fas fa-pencil-alt me-3"></i></a>
                     <a href="{% url 'delete_category' category.pk %}" class="text-danger" data-mdb-tooltip-init title="Delete Category"><i class="fas fa-trash-alt"></i></a>
                 </div>
@@ -45,7 +47,7 @@
             {% endfor %}
         </ul>
     
-        <div class="d-flex justify-content-center gap-3">
+        <div class="buttons-container">
             <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'create_category' %}'">Create New</button>
             <button type="button" class="btn btn-danger" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
         </div>

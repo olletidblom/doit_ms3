@@ -15,9 +15,10 @@
             {% if error_message %}
                 <p class="text-danger">{{ error_message }}</p>
             {% endif %}    
-            <input class="btn btn-primary" type="submit" value="Create">
-            <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'categorys' %}'">Return</button>
-           
+            <div class="buttons-container">
+                <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'categorys' %}'">Create</button>
+                <button type="button" class="btn btn-danger" onclick="window.location.href='{% url 'categorys' %}'">Return</button>
+            </div>
         </form>
     </div>
 

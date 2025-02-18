@@ -53,25 +53,36 @@ class editTask(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('tasks')
     context_object_name = 'edit_task'
     template_name = 'todo/edit.html'
-    
+
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        if form.instance.user != self.request.user:
+            messages.error(self.request, "You are not allowed to edit this task.")
+            return redirect('tasks')  # Prevents unauthorized edits
         response = super().form_valid(form)
         messages.success(self.request, f"Task '{form.instance.title}' edited successfully!")
         return response
-     
+    
     
 class deleteTask(LoginRequiredMixin, DeleteView):
-    model = Task 
-    context_object_name ='task'
+    model = Task
+    context_object_name = 'task'
     template_name = 'todo/delete_task.html'
     success_url = reverse_lazy('tasks')
-    
-    def delete(self, request, *args, **kwargs):
-        task = self.get_object()  # Get the task instance before deleting
+
+    def post(self, request, *args, **kwargs):
+        """Handle the delete request with CSRF protection"""
+        task = self.get_object()
+
+        # Prevent unauthorized deletes
+        if task.user != request.user:
+            messages.error(self.request, "You are not allowed to delete this task.")
+            return redirect('tasks')
+
+        # Add a success message
         messages.success(self.request, f"Task '{task.title}' deleted successfully!")
-        return super().delete(request, *args, **kwargs)
-     
+
+        # Delete the task and redirect
+        return super().post(request, *args, **kwargs)
 
 class createCategory(LoginRequiredMixin, CreateView):
     model = Category

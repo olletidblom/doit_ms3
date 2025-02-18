@@ -10,7 +10,9 @@
     <p>Are you sure you want to delete the category "<strong>{{ category.name }}</strong>"?</p>
     <form method="POST">
         {% csrf_token %}
-        <input class="btn btn-danger" type="submit" value="Delete">
-        <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'categorys' %}'">Return</button>
+        <div class="buttons-container">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='{% url 'categorys' %}'">Return</button>
+        </div>
     </form>
 {% endblock %}
