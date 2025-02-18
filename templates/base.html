@@ -26,16 +26,28 @@
 
 <body>
     {% include "./includes/header.html" %}
-    <main class="container">
-        <div class="row justify-content-center ">
-            <div class="col-3 logo">
+   
+    <main>
+        {% if messages %}
+        <div class="messages">
+              {% for message in messages %}
+              <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                {{ message| safe }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+              </div>
+              {% endfor %}
+        </div>
+        {% endif %}
+        <div class="main-container">
+        
+            <div class="logo-container">
                 {% block logo %}
                 
                 {% endblock logo %}
             </div>
             <div class="w-100"></div>
 
-            <div class="todo"> 
+            <div class="content-container"> 
                 {% block content %}
                 {% endblock content %}</div>
             

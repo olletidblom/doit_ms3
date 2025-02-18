@@ -7,6 +7,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Task, Category
 from .forms import TaskForm, CategoryForm
+from django.contrib import messages
+
 
 
 # Create your models here.
@@ -29,6 +31,8 @@ class taskDetail(LoginRequiredMixin, DetailView):
     context_object_name = 'task'
     template_name = 'todo/task.html'
     
+    
+    
 class createTask(LoginRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm  # Use the updated custom form
@@ -36,8 +40,12 @@ class createTask(LoginRequiredMixin, CreateView):
     template_name = 'todo/create.html'
 
     def form_valid(self, form):
-        form.instance.user = self.request.user  # Assign the current user to the task
-        return super().form_valid(form)
+        form.instance.user = self.request.user
+        response = super().form_valid(form)
+        messages.success(self.request, f"Task '{form.instance.title}' created successfully!")
+        return response
+    
+    
     
 class editTask(LoginRequiredMixin, UpdateView):
     model = Task
@@ -46,6 +54,12 @@ class editTask(LoginRequiredMixin, UpdateView):
     context_object_name = 'edit_task'
     template_name = 'todo/edit.html'
     
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        response = super().form_valid(form)
+        messages.success(self.request, f"Task '{form.instance.title}' edited successfully!")
+        return response
+     
     
 class deleteTask(LoginRequiredMixin, DeleteView):
     model = Task 
@@ -53,7 +67,11 @@ class deleteTask(LoginRequiredMixin, DeleteView):
     template_name = 'todo/delete_task.html'
     success_url = reverse_lazy('tasks')
     
-
+    def delete(self, request, *args, **kwargs):
+        task = self.get_object()  # Get the task instance before deleting
+        messages.success(self.request, f"Task '{task.title}' deleted successfully!")
+        return super().delete(request, *args, **kwargs)
+     
 
 class createCategory(LoginRequiredMixin, CreateView):
     model = Category
@@ -62,8 +80,10 @@ class createCategory(LoginRequiredMixin, CreateView):
     template_name = 'todo/create_category.html'  # Create this template file
 
     def form_valid(self, form):
-        form.instance.user = self.request.user  # Assign the current user to the category
-        return super().form_valid(form)
+        form.instance.user = self.request.user
+        response = super().form_valid(form)
+        messages.success(self.request, f"Category'{form.instance.title}' created successfully!")
+        return response
     
     def form_invalid(self, form):
         context = self.get_context_data(form=form)
@@ -81,6 +101,11 @@ class deleteCategory(LoginRequiredMixin, DeleteView):
         # Ensure users can only delete their own categories
         return Category.objects.filter(user=self.request.user)
     
+    def delete(self, request, *args, **kwargs):
+        category = self.get_object()
+        messages.success(self.request, f"Category '{category.name}' deleted successfully!")
+        return super().delete(request, *args, **kwargs)
+    
 
 class categoryList(LoginRequiredMixin, ListView):
     model = Category
@@ -97,9 +122,22 @@ class editCategory(LoginRequiredMixin, UpdateView):
     
     context_object_name = 'edit_category'
     template_name = 'todo/edit_category.html'
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        response = super().form_valid(form)
+        messages.success(self.request, f"Category'{form.instance.title}' edited successfully!")
+        return response
+    
         
         
 class DeleteFinishedTasks(LoginRequiredMixin, View):
+    
+    
     def post(self, request):
-        Task.objects.filter(user=request.user, completed=True).delete()
+        deleted_count, _ = Task.objects.filter(user=request.user, completed=True).delete()
+        if deleted_count > 0:
+            messages.success(self.request, f"Deleted {deleted_count} completed tasks.")
+        else:
+            messages.info(self.request, "No completed tasks to delete.")
         return redirect('tasks')

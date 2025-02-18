@@ -1,115 +1,178 @@
-/* Set font family and text color globally */
+/* Global Styles */
 body {
-    font-family: "Georgia", sans-serif; /* Change to your preferred font */
-    color: #333; /* Dark gray text color */
-    background-color: #f8f9fa; /* Light background for readability */
+    font-family: "Georgia", sans-serif;
+    color: #333;
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,37,174,1) 0%, rgba(250,237,56,1) 36%, rgba(241,147,55,1) 53%, rgba(250,237,56,1) 99%) no-repeat center/cover;
+    min-height: 100vh;
+    overflow: hidden;
+  
 }
 
-/* Override Bootstrap button styles (optional) */
-.btn {
-    font-family: "Arial", sans-serif;
-    font-size: 16px;
-}
-
-/* Headings */
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Georgia", serif; /* Example: A different font for headings */
-    color: #222; /* Slightly darker text */
+    font-family: "Georgia", serif;
+    color: #222;
 }
 
-/* Links */
-a {
-    color: #007bff; /* Bootstrap blue */
+p, a {
+    color: #000;
     text-decoration: none;
 }
 
 a:hover {
-    color: #0056b3; /* Darker blue */
+    color: #0056b3;
 }
 
-img{
+/* Layout */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
 }
 
+/* Logo */
 
 
-body {
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,37,174,1) 0%, rgba(250,237,56,1) 36%, rgba(241,147,55,1) 53%, rgba(250,237,56,1) 99%);
-    background-size: cover;
-    background-position: 0% 0%;
-    background-repeat:no-repeat;
-    background-color: rgba(0,0,0,0);
-    overflow: hidden; 
-    min-height: 100vh;
+.logo-container img {
+    max-width: 200px; /* Adjust width */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Center it */
 }
 
-
-
-.logo {
-    margin-top: 10px;
-    margin-bottom: 40px;
-   
+/* To-Do List Container */
+.todo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers everything inside */
+    justify-content: center;
+    width: 100%;
 }
-
-
-/*
-.todo {
-    background-color: white;
-    justify-self: center;
+.content-container {
+    background-color: #ea6e6e80;
+    border-radius: 5px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-image: inherit;
-    border:2px solid orange;
-    max-width: 600px; 
-    width: 90%; 
-    
-    min-height: 400px;
-}
-*/
-
-a,
-p {
-    color:rgb(0, 0, 0)
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.659);
+    max-width: 600px;
+    width: 90%;
+    margin: 20px auto;
 }
 
-.task-category{
-    color:rgb(0, 0, 0);
-    font-style: italic;
-}
-
-
-
-.todo{
-    background-color: #ea6e6e80; /* Or a very light shade of your existing gradient */
-    border-radius: 5px; /* Add a slight border-radius for a softer look */
-    padding: 20px; /* Add some padding to give the tasks space to breathe */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.659); /* Add a subtle shadow to lift the container */
-    max-width: 550px;
+/* Task List */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Makes sure the task list items are centered */
+    justify-content: center;
+    width: 100%;
+    max-width: 550px; /* Adjust width to match .todo */
+    margin-right: 13px;
 }
 
 .task-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
     padding: 10px;
-    width: 80%;
     background-color: #ffffff5d;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.659);
+    text-align: center;
+}
+/* Task Content */
+.task-title {
+    flex: 1; /* Allows it to take more space */
    
-    
+    text-align: left;
+    padding-left: 10px;
+    white-space: nowrap; /* Prevents titles from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds '...' if the title is too long */
 }
 
 
+.task-category {
+    flex: 1; /* Keeps it centered in the row */
 
-.delete-container{ 
+    text-align: center;
+    font-style: italic;
     display: flex;
-    align-items: center;
+    align-items: center; /* Vertically center */
     justify-content: center;
 }
 
 
-footer{
-    background-color: rgba(0, 0, 0, 0.1)
+/* Action Buttons */
+.task-actions {
+    flex: 1;
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-right: 10px;
+}
+
+.task-actions a {
+    color: #007bff;
+    font-size: 18px;
+}
+
+.task-actions a:hover {
+    color: #0056b3;
+}
+
+/* Buttons */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.button-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button-danger {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button-primary:hover {
+    background-color: #0056b3;
+}
+
+.button-danger:hover {
+    background-color: #c82333;
+}
+
+/* Floating Messages */
+.messages {
+    background-color: white;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    max-width: 300px;
+    min-width: 200px;
+    text-align: center;
 }
