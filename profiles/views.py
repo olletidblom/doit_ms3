@@ -1,10 +1,11 @@
 from django.views.generic import TemplateView, UpdateView, FormView
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-
+from django.shortcuts import render, redirect
 from .models import Profile
 from .forms import ProfileForm
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404 
+from django.contrib import messages
 
 class Profiles(FormView):
     """User Profile View"""
@@ -25,10 +26,12 @@ class Profiles(FormView):
         return kwargs
 
     def form_valid(self, form):
-        """Save the form and redirect."""
         form.save()
+        messages.success(self.request, "Profile updated successfully!")  # ✅ Add success message
         return super().form_valid(form)
 
    
     def get_success_url(self):
         return super().get_success_url()
+    
+    

@@ -32,7 +32,7 @@
                         </div>
                     {% else %}
                         <div class="task-content">
-                            <a href="{% url 'task' task.id %}">{{ task.title }}</a>
+                            <u><a href="{% url 'task' task.id %}">{{ task.title }}</a></u>
                         </div>
                     {% endif %}
                 </div>

@@ -87,15 +87,15 @@ class deleteTask(LoginRequiredMixin, DeleteView):
 class createCategory(LoginRequiredMixin, CreateView):
     model = Category
     form_class = CategoryForm
-    success_url = reverse_lazy('categorys')  # Redirect to task list after creating a category
-    template_name = 'todo/create_category.html'  # Create this template file
+    success_url = reverse_lazy('categorys')  # Redirect after creating a category
+    template_name = 'todo/create_category.html'  
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.user = self.request.user  # Assign user
         response = super().form_valid(form)
-        messages.success(self.request, f"Category'{form.instance.title}' created successfully!")
+        messages.success(self.request, f"Category '{form.instance.name}' created successfully!")  # ✅ Use `name`
         return response
-    
+
     def form_invalid(self, form):
         context = self.get_context_data(form=form)
         context['error_message'] = "Please correct the errors below."
@@ -129,15 +129,15 @@ class categoryList(LoginRequiredMixin, ListView):
     
 class editCategory(LoginRequiredMixin, UpdateView):
     model = Category
-    fields = ['name']  # Specify fields as a list
-    
+    fields = ['name']  # ✅ Ensure you're using the correct field
     context_object_name = 'edit_category'
     template_name = 'todo/edit_category.html'
-    
+    success_url = reverse_lazy('categorys')  
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         response = super().form_valid(form)
-        messages.success(self.request, f"Category'{form.instance.title}' edited successfully!")
+        messages.success(self.request, f"Category '{form.instance.name}' edited successfully!")  # ✅ Use `name`, not `title`
         return response
     
         
