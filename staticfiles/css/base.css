@@ -4,8 +4,9 @@ body {
     color: #333;
     background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,37,174,1) 0%, rgba(250,237,56,1) 36%, rgba(241,147,55,1) 53%, rgba(250,237,56,1) 99%) no-repeat center/cover;
     min-height: 100vh;
-    overflow: hidden;
-  
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 /* Typography */
@@ -32,27 +33,29 @@ a:hover {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 /* Logo */
-
-
 .logo-container img {
-    max-width: 200px; /* Adjust width */
+    max-width: 150px;
     height: auto;
     display: block;
-    margin: 0 auto; /* Center it */
+    margin: 0 auto;
 }
 
 /* To-Do List Container */
 .todo-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers everything inside */
+    align-items: center;
     justify-content: center;
     width: 100%;
+    padding: 10px;
 }
+
+/* Content Box */
 .content-container {
     background-color: #ea6e6e80;
     border-radius: 5px;
@@ -61,17 +64,17 @@ a:hover {
     max-width: 600px;
     width: 90%;
     margin: 20px auto;
+    box-sizing: border-box;
 }
 
 /* Task List */
 .task-list {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Makes sure the task list items are centered */
-    justify-content: center;
+    align-items: center;
     width: 100%;
-    max-width: 550px; /* Adjust width to match .todo */
-    margin-right: 13px;
+    max-width: 550px;
+    margin: 0 auto;
 }
 
 .task-item {
@@ -83,38 +86,37 @@ a:hover {
     background-color: #ffffff5d;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.659);
     text-align: center;
+    flex-wrap: wrap;
 }
+
 /* Task Content */
 .task-title {
-    flex: 1; /* Allows it to take more space */
-   
+    flex: 1;
     text-align: left;
     padding-left: 10px;
-    white-space: nowrap; /* Prevents titles from wrapping */
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Adds '...' if the title is too long */
+    text-overflow: ellipsis;
+    min-width: 150px;
 }
 
-
 .task-category {
-    flex: 1; /* Keeps it centered in the row */
-
+    flex: 1;
     text-align: center;
     font-style: italic;
     display: flex;
-    align-items: center; /* Vertically center */
+    align-items: center;
     justify-content: center;
+    min-width: 100px;
 }
-
 
 /* Action Buttons */
 .task-actions {
-    flex: 1;
-
     display: flex;
     justify-content: flex-end;
     gap: 10px;
     padding-right: 10px;
+    min-width: 80px;
 }
 
 .task-actions a {
@@ -130,28 +132,29 @@ a:hover {
 .buttons-container {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 20px;
+}
+
+.button-primary, .button-danger {
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
 }
 
 .button-primary {
     background-color: #007bff;
     color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
 }
 
 .button-danger {
     background-color: #dc3545;
     color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
 }
 
 .button-primary:hover {
@@ -172,12 +175,66 @@ a:hover {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    max-width: fit-content; /* Prevents it from being too wide */
-    min-width: fit-content;
-    width: fit-content;
+    max-width: fit-content;
     text-align: center;
-    display: flex; /* Enables flexbox */
-    align-items: center; /* Vertically centers content */
-    justify-content: center; /* Horizontally centers text */
-    min-height: 40px; /* Ensures it has enough height for centering */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .task-title, .task-category, .task-actions {
+        width: 100%;
+        text-align: center;
+        padding: 5px 0;
+    }
+
+    .task-actions {
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .button-primary, .button-danger {
+        max-width: 100%;
+    }
+
+    .messages {
+        top: 5px;
+        right: 5px;
+        width: 90%;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container img {
+        max-width: 120px;
+    }
+
+    .content-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .task-title {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .task-category {
+        font-size: 14px;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }
