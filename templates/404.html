@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="todo-container">
+    <article class="task-list">
+        <h1 class="task-title text-center">
+            
+            Oops! Page Not Found (404)
+        </h1>
+    
+        <ul class="task-list">
+            <li class="task-item">
+                <strong><p>The page you're looking for doesn't exist.</p></strong>
+            </li>
+            
+        </ul>
+    
+        <div class="buttons-container">
+            <button  type="button" class="btn btn-primary" onclick="window.location.href='{% url 'edit_task' task.id %}'">Edit Task</button>
+            <button type="button" class="btn btn-danger" onclick="window.location.href='{% url 'tasks' %}'">Return</button>
+            
+        </div>
+    </article>
+    </div>
+{% endblock content %}

@@ -160,3 +160,6 @@ class DeleteFinishedTasks(LoginRequiredMixin, View):
         else:
             messages.info(self.request, "No completed tasks to delete.")
         return redirect('tasks')
+    
+    
+    

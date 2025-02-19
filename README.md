@@ -1,6 +1,6 @@
 # DoIt - Django To-Do App
 
-![Am I Responsive](docs/am-i-responsive.PNG)
+![Am I Responsive](docs/images/amiresponsive/amiresponsive.png)
 
 **Developer: Olle
 💻 [Visit Live Website](https://doitms3-10b442815bf1.herokuapp.com/)  
@@ -66,11 +66,69 @@ DoIt is a simple and intuitive to-do list application built with Django. Users c
 
 ## ✅ User Stories
 
-1. As a user, I can create a task so that I can track my to-dos.
-2. As a user, I can edit a task so that I can update its details.
-3. As a user, I can delete a task so that I can remove unnecessary tasks.
-4. As a user, I can mark a task as completed so that I can keep track of finished work.
-5. As a user, I can register and log in so that my tasks are saved.
+### Users
+### Users
+<details><summary>1. As a user, I can create a task so that I can track my to-dos.</summary>
+<img src="docs/images/user_storys/1.png">
+</details>
+
+<details><summary>2. As a user, I can edit a task so that I can update its details.</summary>
+<img src="docs/images/user_storys/2.png">
+</details>
+
+<details><summary>3. As a user, I can delete a task so that I can remove unnecessary tasks.</summary>
+<img src="docs/images/user_storys/3.png">
+</details>
+
+<details><summary>4. As a user, I can mark a task as completed so that I can keep track of finished work.</summary>
+<img src="docs/images/user_storys/4.png">
+</details>
+
+<details><summary>5. As a user, I can register and log in so that my tasks are saved.</summary>
+<img src="docs/images/user_storys/5.png">
+</details>
+
+<details><summary>6. As a user, I can create and assign a category to a task.</summary>
+<img src="docs/images/user_storys/6.png">
+</details>
+
+<details><summary>7. As a user, I can paginate through my task list so that I can navigate large lists easily.</summary>
+<img src="docs/images/user_storys/7.png">
+</details>
+
+<details><summary>8. As a user, I can receive confirmation messages when I create, edit, or delete a task so that I know my actions were successful.</summary>
+<img src="docs/images/user_storys/8.png">
+</details>
+
+<details><summary>9. As a user, I can log out so that my account remains secure.</summary>
+<img src="docs/images/user_storys/9.png">
+</details>
+
+### Admin
+
+<details><summary>10. As an admin, I can view all user tasks so that I can manage user activity.</summary>
+<img src="docs/images/user_storys/10.png">
+</details>
+
+<details><summary>11. As an admin, I can delete inappropriate or spam tasks so that the platform remains clean.</summary>
+<img src="docs/images/user_storys/11.png">
+</details>
+
+<details><summary>12. As an admin, I can create and manage categories so that users have a structured way to organize tasks.</summary>
+<img src="docs/images/user_storys/12.png">
+</details>
+
+<details><summary>13. As an admin, I can enable or disable user accounts so that I can control platform access.</summary>
+<img src="docs/images/user_storys/13.png">
+</details>
+
+<details><summary>14. As an admin, I can edit user tasks in case of data corrections or issues.</summary>
+<img src="docs/images/user_storys/14.png">
+</details>
+
+<details><summary>15. As an admin, I can access an admin dashboard so that I can manage tasks and users efficiently.</summary>
+<img src="docs/images/user_storys/15.png">
+</details>
 
 ---
 
@@ -80,13 +138,29 @@ DoIt is a simple and intuitive to-do list application built with Django. Users c
 A modern minimalistic colour scheme was used to keep the UI clean and easy to read.
 
 ### 🎨 Fonts
-Google Fonts was used to ensure a professional and legible typeface.
+Georiga was used to ensure a professional and legible typeface.
 
 ### 🎨 Structure
 The site follows a **dashboard-style layout**, with an intuitive **task management interface**.
 
 ### 🎨 Wireframes
 Wireframes were created using [Balsamiq](https://balsamiq.com/) to plan the UI structure.
+
+<details><summary>Log In</summary>
+<img src="docs/images/wireframes/login.png">
+</details>
+<details><summary>Sign Up</summary>
+<img src="docs/images/wireframes/signup.png">
+</details>
+<details><summary>Task List</summary>
+<img src="docs/images/wireframes/todolist.png">
+</details>
+<details><summary>Task View</summary>
+<img src="docs/images/wireframes/todoview.png">
+</details>
+<details><summary>User Info</summary>
+<img src="docs/images/wireframes/userinfo.png">
+</details>
 
 ---
 
@@ -107,6 +181,89 @@ Wireframes were created using [Balsamiq](https://balsamiq.com/) to plan the UI s
 - **GitHub** (Version control)
 
 ---
+
+## Features
+The page consists of 2 pages and fourteen features
+
+### Start Screen
+- Consists of the logo
+- Allows users to easily start a game or learn how to play.
+- Features the footer with info and contact form.
+- User story 3, 6
+<details><summary>Start Screen</summary>
+<img src="assets/images/readme/website/startpage.png">
+</details>
+
+### Footer
+- Shows info about the creator. 
+- Contains a contact form where people can send in suggestions and feedback.
+- User story 6
+<details><summary>Footer</summary>
+<img src="assets/images/readme/website/footer.png">
+</details>
+
+
+### Contact Form
+- Allows the user get in touch with the company
+
+- User story 6, 
+<details><summary>Contact Form</summary>
+<img src="assets/images/readme/website/contactform.png">
+</details>
+
+ 
+### Player Amount
+- Lets the user choose how many players should be in the game
+- User story 1
+<details><summary>Player Amount</summary>
+<img src="assets/images/readme/website/playeramount.png">
+</details>
+
+
+### Player info
+- Allows the user assign names and colors to players.
+- Allows the user to choose if player should be bot or not.
+- User story 2
+<details><summary>Player Info</summary>
+<img src="assets/images/readme/website/playernames.png">
+</details>
+
+
+### Main Game
+- Allows the user to play the game.
+- Shows total score and round score. 
+- Shows players turn. 
+- Buttons to select cards and castles
+- Shows winner when game is over
+- User Stories 4, 5 , 7 
+<details><summary>Main Game</summary>
+<img src="assets/images/readme/website/maingame.png">
+</details>
+
+
+
+### Card Board
+- Allows user to choose between randomly placed cards.
+
+<details><summary>Card Board</summary>
+<img src="assets/images/readme/website/cardboard.png">
+</details>
+
+
+### Castle Board
+- Allows user to choose a castle to place. 
+- Shows user how many castle of each type they have left
+<details><summary>Castle Board</summary>
+<img src="assets/images/readme/website/castleboard.png">
+</details>
+
+
+### 404page
+- If something foes wrong its an easy way back to the mainpage.
+- User story 8
+<details><summary>404</summary>
+<img src="assets/images/readme/website/404.png">
+</details>
 
 ## 🔥 Features
 
@@ -141,9 +298,6 @@ Wireframes were created using [Balsamiq](https://balsamiq.com/) to plan the UI s
 - Tested on multiple browsers (Chrome, Firefox, Safari).
 - Mobile responsiveness verified on real devices and emulators.
 
-### ✅ Automated Testing
-- Unit tests were written using **Django’s TestCase** module.
-- Coverage reports generated to track test effectiveness.
 
 ---
 
@@ -191,7 +345,7 @@ heroku restart
 ## 📜 Credits
 
 ### 📷 Images
-- Placeholder images sourced from **Pexels.com**.
+- Placeholder images sourced from **ChatGpt**, edited with GIMP.
 
 ### 📌 Code
 - Bootstrap templates used for styling.
@@ -200,7 +354,7 @@ heroku restart
 ---
 
 ## 💙 Acknowledgements
-- Special thanks to **my mentor** for guidance.
+- Special thanks to **Mo Shami** for guidance.
 - Inspired by **Django tutorials and online resources**.
 - Thanks to **Code Institute** for support.
 
