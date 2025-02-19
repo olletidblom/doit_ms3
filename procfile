@@ -1,1 +1,1 @@
-web: gunicorn doit_ms3.wsgi
+web: gunicorn doit.wsgi
