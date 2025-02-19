@@ -48,8 +48,27 @@
                     <a href="{% url 'delete_task' task.id %}" class="text-danger" data-mdb-tooltip-init title="Delete todo"><i class="fas fa-trash-alt"></i></a>
                 </div>
             </li>
+            {% empty %}
+                <p>No tasks available.</p>
             {% endfor %}
         </ul>
+
+        <!-- Pagination Controls -->
+        {% if tasks.has_other_pages %}
+        <div class="pagination">
+            {% if tasks.has_previous %}
+                
+                <a href="?page={{ tasks.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            <span>Page {{ tasks.number }} of {{ tasks.paginator.num_pages }}</span>
+
+            {% if tasks.has_next %}
+                <a href="?page={{ tasks.next_page_number }}">Next</a>
+              
+            {% endif %}
+        </div>
+        {% endif %}
     
         <div class="buttons-container">
             <button type="button" class="btn btn-primary" onclick="window.location.href='{% url 'create_task' %}'">Create New</button>
@@ -59,7 +78,6 @@
                 <button type="submit" class="btn btn-danger">Delete Finished</button>
             </form>
         </div>
-        
     </article>
 </div>
 {% endblock content %}

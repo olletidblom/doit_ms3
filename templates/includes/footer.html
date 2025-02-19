@@ -1,6 +1,6 @@
 {% load static %}
 
-<footer class="fixed-bottom py-3 bg-body-tertiary">  <div class="container">
+<footer class="fixed-bottom py-2 bg-body-tertiary text-center text-sm-start">  <div class="container">
     {% if request.user.is_authenticated %}
         <div class="d-flex justify-content-around align-items-center">
             <p class="mb-0 text-muted">Signed in as: <strong>{{ user }}</strong></p>

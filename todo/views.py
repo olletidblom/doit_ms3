@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.views.generic import ListView, View
 from django.views.generic import DetailView
@@ -17,14 +18,21 @@ from django.contrib import messages
 class taskList(LoginRequiredMixin, ListView):
     model = Task
     context_object_name = 'tasks'
-    
+    template_name = 'todo/task_list.html'
+    paginate_by = 5  # Show 6 tasks per page
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['tasks'] = context['tasks'].filter(user=self.request.user)
-        context['count'] = context['tasks'].filter(completed=False).count()
+        tasks = Task.objects.filter(user=self.request.user)
+        paginator = Paginator(tasks, self.paginate_by)
+        page = self.request.GET.get('page')
+        page_obj = paginator.get_page(page)
         
+        context['tasks'] = page_obj
+        context['count'] = tasks.filter(completed=False).count()
+        context['is_paginated'] = page_obj.has_other_pages()
+        context['page_obj'] = page_obj
         return context
-
 
 class taskDetail(LoginRequiredMixin, DetailView):
     model = Task
