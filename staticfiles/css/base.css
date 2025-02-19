@@ -1,0 +1,183 @@
+/* Global Styles */
+body {
+    font-family: "Georgia", sans-serif;
+    color: #333;
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,37,174,1) 0%, rgba(250,237,56,1) 36%, rgba(241,147,55,1) 53%, rgba(250,237,56,1) 99%) no-repeat center/cover;
+    min-height: 100vh;
+    overflow: hidden;
+  
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Georgia", serif;
+    color: #222;
+}
+
+p, a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Layout */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Logo */
+
+
+.logo-container img {
+    max-width: 200px; /* Adjust width */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Center it */
+}
+
+/* To-Do List Container */
+.todo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers everything inside */
+    justify-content: center;
+    width: 100%;
+}
+.content-container {
+    background-color: #ea6e6e80;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.659);
+    max-width: 600px;
+    width: 90%;
+    margin: 20px auto;
+}
+
+/* Task List */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Makes sure the task list items are centered */
+    justify-content: center;
+    width: 100%;
+    max-width: 550px; /* Adjust width to match .todo */
+    margin-right: 13px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff5d;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.659);
+    text-align: center;
+}
+/* Task Content */
+.task-title {
+    flex: 1; /* Allows it to take more space */
+   
+    text-align: left;
+    padding-left: 10px;
+    white-space: nowrap; /* Prevents titles from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds '...' if the title is too long */
+}
+
+
+.task-category {
+    flex: 1; /* Keeps it centered in the row */
+
+    text-align: center;
+    font-style: italic;
+    display: flex;
+    align-items: center; /* Vertically center */
+    justify-content: center;
+}
+
+
+/* Action Buttons */
+.task-actions {
+    flex: 1;
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-right: 10px;
+}
+
+.task-actions a {
+    color: #007bff;
+    font-size: 18px;
+}
+
+.task-actions a:hover {
+    color: #0056b3;
+}
+
+/* Buttons */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.button-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button-danger {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button-primary:hover {
+    background-color: #0056b3;
+}
+
+.button-danger:hover {
+    background-color: #c82333;
+}
+
+/* Floating Messages */
+.messages {
+    background-color: rgba(255, 255, 255, 0.603);
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    max-width: fit-content; /* Prevents it from being too wide */
+    min-width: fit-content;
+    width: fit-content;
+    text-align: center;
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Vertically centers content */
+    justify-content: center; /* Horizontally centers text */
+    min-height: 40px; /* Ensures it has enough height for centering */
+}

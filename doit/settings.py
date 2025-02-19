@@ -62,6 +62,7 @@ LOGIN_REDIRECT_URL = '/'  # Or any other URL you'd like, e.g. '/dashboard/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -162,6 +163,9 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# This tells Django where to collect static files for production
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
 
@@ -169,3 +173,4 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
