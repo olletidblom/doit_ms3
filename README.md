@@ -67,7 +67,6 @@ DoIt is a simple and intuitive to-do list application built with Django. Users c
 ## ✅ User Stories
 
 ### Users
-### Users
 <details><summary>1. As a user, I can create a task so that I can track my to-dos.</summary>
 <img src="docs/images/user_storys/1.png">
 </details>
@@ -149,7 +148,7 @@ The site follows a **dashboard-style layout**, with an intuitive **task manageme
 - The database consists of three main models: `User`, `Category`, `Task`, and `Profile`.
 
 <details><summary>Show diagram</summary>
-<img src="docs/images/todoerd.png">
+<img src="docs/images/doiterd.png">
 </details>
 
 ---
@@ -472,6 +471,279 @@ Google Lighthouse in Google Chrome Developer Tools was used to test the performa
 ---
 
 ## 🧪 Testing
+
+### User Testing 
+
+# Manual Testing
+
+## 1. User Story: Create a Task
+_As a user, I can create a task so that I can track my to-dos._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Click on 'Add Task' button | Task creation form appears | Works as expected |
+| Fill in task details and submit | Task is added to the task list | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/1.1.png">
+<img src="docs/images/user_storys_testind/1.2.png">s
+</details>
+
+---
+
+## 2. User Story: Edit a Task
+_As a user, I can edit a task so that I can update its details._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Click on 'Edit' button next to a task | Task edit form appears | Works as expected |
+| Modify task details and save changes | Updated task appears in task list | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/2.1.png">
+<img src="docs/images/user_storys_testind/2.2.png">s
+</details>
+
+---
+
+## 3. User Story: Delete a Task
+_As a user, I can delete a task so that I can remove unnecessary tasks._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Click on 'Delete' button next to a task | Confirmation prompt appears | Works as expected |
+| Confirm deletion | Task is removed from task list | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/3.1.png">
+<img src="docs/images/user_storys_testind/3.2.png">
+</details>
+
+---
+
+## 4. User Story: Mark a Task as Completed
+_As a user, I can mark a task as completed so that I can keep track of finished work._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+
+|------------|-------------------|-------------------|
+| Click on 'Edit' button next to a task | Task edit form appears | Works as expected |
+| Click on 'Complete' checkbox or button | Task is visually marked as completed | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/4.1.png">
+<img src="docs/images/user_storys_testind/4.2.png">
+</details>
+---
+
+## 5. User Story: Register and Log In
+_As a user, I can register and log in so that my tasks are saved._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Click on 'Register' and submit valid details | Account is created, user is redirected to dashboard | Works as expected |
+| Click on 'Login' and enter valid credentials | User is logged in and redirected to task list | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/5.1.png">
+<img src="docs/images/user_storys_testind/5.2.png">
+</details>
+
+---
+
+## 6. User Story: Assign a Category to a Task
+_As a user, I can create and assign a category to a task._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Click on 'Add Category' | Category creation form appears | Works as expected |
+| Enter category name and save | New category is available in dropdown | Works as expected |
+| Select category when adding/editing a task | Task is assigned to selected category | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/6.1.png">
+<img src="docs/images/user_storys_testind/6.2.png">
+<img src="docs/images/user_storys_testind/6.3.png">
+<img src="docs/images/user_storys_testind/6.4.png">
+</details>
+
+
+---
+
+## 7. User Story: Paginate Task List
+_As a user, I can paginate through my task list so that I can navigate large lists easily._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Scroll through task list | Pagination controls appear | Works as expected |
+| Click on 'Next' or 'Previous' page | Task list updates to show next/previous tasks | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/7.1.png">
+<img src="docs/images/user_storys_testind/7.2.png">
+</details>
+
+---
+
+## 8. User Story: Confirmation Messages
+_As a user, I can receive confirmation messages when I create, edit, or delete a task so that I know my actions were successful._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Create/Edit/Delete a task | A success message appears | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/8.1.png">
+</details>
+---
+
+## 9. User Story: Log Out
+_As a user, I can log out so that my account remains secure._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Click on 'Logout' button | User is logged out and redirected to login page | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/9.1.png">
+<img src="docs/images/user_storys_testind/9.2.png">
+</details>
+---
+
+# Admin Features
+
+## 10. User Story: View All User Tasks
+_As an admin, I can view all user tasks so that I can manage user activity._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Navigate to admin panel | Admin dashboard loads with user tasks | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/10.1.png">
+<img src="docs/images/user_storys_testind/10.2.png">
+</details>
+
+---
+
+## 11. User Story: Delete Inappropriate Tasks
+_As an admin, I can delete inappropriate or spam tasks so that the platform remains clean._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Click 'Delete' on a task | Task is removed after confirmation | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/11.1.png">
+<img src="docs/images/user_storys_testind/11.2.png">
+<img src="docs/images/user_storys_testind/11.3.png">
+</details>
+---
+
+## 12. User Story: Manage Categories
+_As an admin, I can create and manage categories so that users have a structured way to organize tasks._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Click 'Manage Categories' in admin panel | Category management page appears | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/12.1.png">
+<img src="docs/images/user_storys_testind/12.2.png">
+
+</details>
+
+---
+
+## 13. User Story: Enable/Disable User Accounts
+_As an admin, I can enable or disable user accounts so that I can control platform access._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Click 'Disable' on a user account | User is disabled | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/13.1.png">
+<img src="docs/images/user_storys_testind/13.2.png">
+
+</details>
+
+---
+
+## 14. User Story: Edit User Tasks
+_As an admin, I can edit user tasks in case of data corrections or issues._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Click 'Edit' on a user's task | Task details appear for editing | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/14.1.png">
+<img src="docs/images/user_storys_testind/14.2.png">
+<img src="docs/images/user_storys_testind/14.3.png">
+</details>
+---
+
+## 15. User Story: Admin Dashboard
+_As an admin, I can access an admin dashboard so that I can manage tasks and users efficiently._
+
+### Test Cases
+
+| **Step** | **Expected Result** | **Actual Result** |
+|------------|-------------------|-------------------|
+| Click 'Admin Dashboard' | Admin dashboard loads successfully | Works as expected |
+
+<details>
+<summary>Screenshot</summary>
+<img src="docs/images/user_storys_testind/15.1.png">
+
+</details>
+
+---
+
+This Markdown document is structured for easy use. You just need to replace **"Works as expected"** with actual test results and add your screenshots. Let me know if you need modifications! 🚀
 
 ### ✅ Manual Testing
 - Tested on multiple browsers (Chrome, Firefox, Safari).
