@@ -181,106 +181,97 @@ Wireframes were created using [Balsamiq](https://balsamiq.com/) to plan the UI s
 - **GitHub** (Version control)
 
 ---
-
 ## Features
-The page consists of 2 pages and fourteen features
 
-### Start Screen
-- Consists of the logo
-- Allows users to easily start a game or learn how to play.
-- Features the footer with info and contact form.
-- User story 3, 6
-<details><summary>Start Screen</summary>
-<img src="assets/images/readme/website/startpage.png">
+### Log In
+- If user isn't logged in, this will be the first screen people see
+- Links to signup
+- Clean and easy interface
+
+
+<details><summary>See feature images</summary>
+
+![Log In](docs/images/features/login.png)
 </details>
+
+
+### Navigation
+- Name of the app
+- Fully Responsive
+- On small screens switches to hamburger menu
+- Indicates login/logout in status
+- Displayed on all pages
+
+<details><summary>See feature images</summary>
+
+![Navigation](docs/images/features/navbar.png)
+</details>
+
 
 ### Footer
-- Shows info about the creator. 
-- Contains a contact form where people can send in suggestions and feedback.
-- User story 6
-<details><summary>Footer</summary>
-<img src="assets/images/readme/website/footer.png">
+- Shows logged in as: {{user}} if logged in.
+- Log out
+- Displayed across all pages
+- Sign in if not logged in
+
+<details><summary>See feature images</summary>
+
+![Footer](docs/features/feature-footer.PNG)
 </details>
 
 
-### Contact Form
-- Allows the user get in touch with the company
+### Sign Up
+- Allow users to register an acoount
 
-- User story 6, 
-<details><summary>Contact Form</summary>
-<img src="assets/images/readme/website/contactform.png">
-</details>
 
- 
-### Player Amount
-- Lets the user choose how many players should be in the game
-- User story 1
-<details><summary>Player Amount</summary>
-<img src="assets/images/readme/website/playeramount.png">
+<details><summary>See feature images</summary>
+
+![Sign up](docs/features/feature-register.PNG)
 </details>
 
 
-### Player info
-- Allows the user assign names and colors to players.
-- Allows the user to choose if player should be bot or not.
-- User story 2
-<details><summary>Player Info</summary>
-<img src="assets/images/readme/website/playernames.png">
+### Tasklist
+- Shows users tasks
+- Paginated by 5
+- Allows user to create, edit and delete tasks
+
+<details><summary>See feature images</summary>
+
+![Tasklist](docs/images/features/tasklist.png)
+![Login](docs/features/feature-login2.PNG)
 </details>
 
 
-### Main Game
-- Allows the user to play the game.
-- Shows total score and round score. 
-- Shows players turn. 
-- Buttons to select cards and castles
-- Shows winner when game is over
-- User Stories 4, 5 , 7 
-<details><summary>Main Game</summary>
-<img src="assets/images/readme/website/maingame.png">
+### Logout
+- Allows the user to securely log out
+- Ask user if they are sure they want to log out
+
+<details><summary>See feature images</summary>
+
+![Logout](docs/images/features/logout.png)
 </details>
 
 
+### Category
+- Allows the user to create, edit and delete categorys
 
-### Card Board
-- Allows user to choose between randomly placed cards.
+<details><summary>See feature images</summary>
 
-<details><summary>Card Board</summary>
-<img src="assets/images/readme/website/cardboard.png">
+![Book](docs/features/feature-book-table.PNG)
+![Categorys](docs/images/features/categorys.png)
 </details>
 
 
-### Castle Board
-- Allows user to choose a castle to place. 
-- Shows user how many castle of each type they have left
-<details><summary>Castle Board</summary>
-<img src="assets/images/readme/website/castleboard.png">
+### Account
+- Allows the user to see and edit their user profile
+
+<details><summary>See feature images</summary>
+
+![My Bookings](docs/images/features/account.png)
 </details>
 
+##### Back to [top](#table-of-contents)<hr>
 
-### 404page
-- If something foes wrong its an easy way back to the mainpage.
-- User story 8
-<details><summary>404</summary>
-<img src="assets/images/readme/website/404.png">
-</details>
-
-## 🔥 Features
-
-### ✅ User Authentication
-- Users can **register**, **log in**, and **log out**.
-- Secure authentication handled by Django-Allauth.
-
-### ✅ Task Management
-- Create, update, and delete tasks.
-- Mark tasks as complete.
-- Filter tasks by status (Pending/Completed).
-
-### ✅ Responsive Design
-- Works seamlessly on desktops, tablets, and mobile devices.
-
-### ✅ Secure Data Storage
-- User data is stored securely in a PostgreSQL database.
 
 ---
 
