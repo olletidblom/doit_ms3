@@ -281,6 +281,82 @@ Wireframes were created using [Balsamiq](https://balsamiq.com/) to plan the UI s
 - JavaScript validated using **JSHint**.
 - Accessibility tested using **Lighthouse** and **WAVE**.
 
+## Validation
+
+### HTML Validation
+The W3C Markup Validation Service was used to validate the HTML of the website. All pages pass with no errors no warnings to show.
+<details><summary>Tasklist</summary>
+<img src="docs/images/validation/html/tasklist.png">
+</details>
+<details><summary>TaskCrud</summary>
+<img src="docs/images/validation/html/edittask.png">
+<img src="docs/images/validation/html/creattask.png">
+<img src="docs/images/validation/html/deletetask.png">
+</details>
+<details><summary>Categorylist</summary>
+<img src="docs/images/validation/html/category.png">
+</details>
+<details><summary>CategoryCrud</summary>
+<img src="docs/images/validation/html/editcategory.png">
+<img src="docs/images/validation/html/createcategory.png">
+<img src="docs/images/validation/html/deletecategory.png">
+</details>
+<details><summary>Profilee</summary>
+<img src="docs/images/validation/html/profile.png">
+</details>
+<details><summary>Login, Signup, Logout</summary>
+<img src="docs/images/validation/html/login.png">
+<img src="docs/images/validation/html/signup.png">
+<img src="docs/images/validation/html/logout.png">
+</details>
+
+
+### CSS Validation
+The W3C Jigsaw CSS Validation Service was used to validate the CSS of the website.
+The style.css file was approved with just a few warnings.
+<details><summary>style.css</summary>
+<img src="docs/images/validation/css/css.png">
+</details>
+
+### Accessibility
+The WAVE WebAIM web accessibility evaluation tool was used to ensure the website met high accessibility standards. All pages pass with 0 errors.
+<details><summary>Home</summary>
+<img src="assets/images/accesability_validation/home.png">
+</details>
+<details><summary>About</summary>
+<img src="assets/images/accesability_validation/about.png">
+</details>
+<details><summary>Roster</summary>
+<img src="assets/images/accesability_validation/roster.png">
+</details>
+<details><summary>Artists</summary>
+<img src="assets/images/accesability_validation/olivia.png">
+<img src="assets/images/accesability_validation/tuva.png">
+</details>
+<details><summary>Contact</summary>
+<img src="assets/images/accesability_validation/contact.png">
+</details>
+
+### Performance 
+Google Lighthouse in Google Chrome Developer Tools was used to test the performance of the website. 
+
+<details><summary>Home</summary>
+<img src="assets/images/lighthouse/home.png">
+</details>
+<details><summary>About</summary>
+<img src="assets/images/lighthouse/about.png">
+</details>
+<details><summary>Roster</summary>
+<img src="assets/images/lighthouse/roster.png">
+</details>
+<details><summary>Artists</summary>
+<img src="assets/images/lighthouse/olivia.png">
+<img src="assets/images/lighthouse/tuva.png">
+</details>
+<details><summary>Contact</summary>
+<img src="assets/images/lighthouse/contact.png">
+</details>
+
 ---
 
 ## 🧪 Testing
@@ -288,7 +364,6 @@ Wireframes were created using [Balsamiq](https://balsamiq.com/) to plan the UI s
 ### ✅ Manual Testing
 - Tested on multiple browsers (Chrome, Firefox, Safari).
 - Mobile responsiveness verified on real devices and emulators.
-
 
 ---
 
