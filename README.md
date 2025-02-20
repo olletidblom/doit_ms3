@@ -143,6 +143,82 @@ Georiga was used to ensure a professional and legible typeface.
 ### 🎨 Structure
 The site follows a **dashboard-style layout**, with an intuitive **task management interface**.
 
+# Database
+
+- Built with Python and the Django framework using PostgreSQL for production (Heroku deployment).
+- The database consists of three main models: `User`, `Category`, `Task`, and `Profile`.
+
+<details><summary>Show diagram</summary>
+<img src="docs/images/todoerd.png">
+</details>
+
+---
+
+## User Model
+The `User` model (from Django's built-in authentication system) contains the following fields:
+
+- `id`
+- `password`
+- `last_login`
+- `is_superuser`
+- `username`
+- `first_name`
+- `last_name`
+- `email`
+- `is_staff`
+- `is_active`
+- `date_joined`
+
+---
+
+## Category Model
+The `Category` model represents task categories and contains:
+
+- `id` (Primary Key)
+- `name` (CharField, max length: 100)
+- `user` (ForeignKey to `User`, `CASCADE` on delete)
+
+**Meta Constraints:**
+- Unique constraint on `name` per `user`.
+
+---
+
+## Task Model
+The `Task` model represents individual tasks and contains:
+
+- `id` (Primary Key)
+- `user` (ForeignKey to `User`, `CASCADE` on delete, related name: `tasks`)
+- `title` (CharField, max length: 255)
+- `description` (TextField, nullable)
+- `completed` (BooleanField, default: `False`)
+- `created_at` (DateTimeField, auto_now_add=True)
+- `updated_at` (DateTimeField, auto_now=True)
+- `category` (ForeignKey to `Category`, `SET_NULL` on delete, nullable, related name: `tasks`)
+
+---
+
+## Profile Model
+The `Profile` model stores additional user details and contains:
+
+- `id` (Primary Key)
+- `user` (OneToOneField to `User`, `CASCADE` on delete)
+- `fname` (CharField, max length: 50, nullable)
+- `lname` (CharField, max length: 50, nullable)
+- `bio` (RichTextField, max length: 300, nullable)
+- `location` (CharField, max length: 100, nullable)
+- `birthdate` (DateField, nullable)
+- `updated_at` (DateTimeField, default: `timezone.now`)
+
+### Signals:
+A `post_save` signal is used to automatically create a `Profile` for each new `User` instance.
+
+```python
+@receiver(post_save, sender=User)
+def create_user_profile(instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+```
+
 ### 🎨 Wireframes
 Wireframes were created using [Balsamiq](https://balsamiq.com/) to plan the UI structure.
 
@@ -270,21 +346,29 @@ Wireframes were created using [Balsamiq](https://balsamiq.com/) to plan the UI s
 ![My Bookings](docs/images/features/account.png)
 </details>
 
+### Messages
+- Allows the user to see what they done
+
+<details><summary>See feature images</summary>
+
+![My Bookings](docs/images/features/message.png)
+</details>
+
 ##### Back to [top](#table-of-contents)<hr>
 
 
 ---
 
+
 ## ✔️ Validation
+
 - HTML and CSS validated using **W3C Validator**.
 - Python code checked with **PEP8 compliance**.
 - JavaScript validated using **JSHint**.
 - Accessibility tested using **Lighthouse** and **WAVE**.
 
-## Validation
-
 ### HTML Validation
-The W3C Markup Validation Service was used to validate the HTML of the website. All pages pass with no errors no warnings to show.
+The W3C Markup Validation Service was used to validate the HTML of the website. All pages pass with no errors but some warnings to show.
 <details><summary>Tasklist</summary>
 <img src="docs/images/validation/html/tasklist.png">
 </details>
@@ -313,49 +397,77 @@ The W3C Markup Validation Service was used to validate the HTML of the website. 
 
 ### CSS Validation
 The W3C Jigsaw CSS Validation Service was used to validate the CSS of the website.
-The style.css file was approved with just a few warnings.
+The style.css file was approved.
 <details><summary>style.css</summary>
 <img src="docs/images/validation/css/css.png">
 </details>
 
+### JavaScript Validation
+JSHint JS Validation Service
+
+<details><summary>Script.js</summary>
+<img src="docs/images/validation/js/js.png">
+</details><hr>
+
+### PEP8 Validation
+Python code checked with **PEP8 compliance**
+
+
 ### Accessibility
 The WAVE WebAIM web accessibility evaluation tool was used to ensure the website met high accessibility standards. All pages pass with 0 errors.
-<details><summary>Home</summary>
-<img src="assets/images/accesability_validation/home.png">
+<details><summary>Tasklist</summary>
+<img src="docs/images/validation/accessibillity//tasklist.png">
 </details>
-<details><summary>About</summary>
-<img src="assets/images/accesability_validation/about.png">
+<details><summary>TaskCrud</summary>
+<img src="docs/images/validation/accessibillity/edittask.png">
+<img src="docs/images/validation/accessibillity/createtask.png">
+<img src="docs/images/validation/accessibillity/deletetask.png">
 </details>
-<details><summary>Roster</summary>
-<img src="assets/images/accesability_validation/roster.png">
+<details><summary>Categorylist</summary>
+<img src="docs/images/validation/accessibillity/categorys.png">
 </details>
-<details><summary>Artists</summary>
-<img src="assets/images/accesability_validation/olivia.png">
-<img src="assets/images/accesability_validation/tuva.png">
+<details><summary>CategoryCrud</summary>
+<img src="docs/images/validation/accessibillity/editcategory.png">
+<img src="docs/images/validation/accessibillity/createcategory.png">
+<img src="docs/images/validation/accessibillity/deletecategory.png">
 </details>
-<details><summary>Contact</summary>
-<img src="assets/images/accesability_validation/contact.png">
+<details><summary>Profilee</summary>
+<img src="docs/images/validation/accessibillity/profile.png">
+</details>
+<details><summary>Login, Signup, Logout</summary>
+<img src="docs/images/validation/accessibillity/login.png">
+<img src="docs/images/validation/accessibillity/signup.png">
+<img src="docs/images/validation/accessibillity/logout.png">
 </details>
 
 ### Performance 
 Google Lighthouse in Google Chrome Developer Tools was used to test the performance of the website. 
 
-<details><summary>Home</summary>
-<img src="assets/images/lighthouse/home.png">
+<details><summary>Tasklist</summary>
+<img src="docs/images/validation/lighthouse/tasklist.png">
 </details>
-<details><summary>About</summary>
-<img src="assets/images/lighthouse/about.png">
+<details><summary>TaskCrud</summary>
+<img src="docs/images/validatio/lighthouse/edittask.png">
+<img src="docs/images/validation/lighthouse/createtask.png">
+<img src="docs/images/validation/lighthouse/deletetask.png">
 </details>
-<details><summary>Roster</summary>
-<img src="assets/images/lighthouse/roster.png">
+<details><summary>Categorylist</summary>
+<img src="docs/images/validation/lighthouse/categorys.png">
 </details>
-<details><summary>Artists</summary>
-<img src="assets/images/lighthouse/olivia.png">
-<img src="assets/images/lighthouse/tuva.png">
+<details><summary>CategoryCrud</summary>
+<img src="docs/images/validation/lighthouse/editcategory.png">
+<img src="docs/images/validation/lighthouse/createcategory.png">
+<img src="docs/images/validation/lighthouse/deletecategory.png">
 </details>
-<details><summary>Contact</summary>
-<img src="assets/images/lighthouse/contact.png">
+<details><summary>Profilee</summary>
+<img src="docs/images/validation/lighthouse//profile.png">
 </details>
+<details><summary>Login, Signup, Logout</summary>
+<img src="docs/images/validation/lighthouse/login.png">
+<img src="docs/images/validation/lighthouse/signup.png">
+<img src="docs/images/validation/lighthouse/logout.png">
+</details>
+
 
 ---
 
@@ -387,8 +499,8 @@ heroku create doit-todo-app
 
 ### 2️⃣ **Set Up Environment Variables**
 ```sh
-heroku config:set SECRET_KEY='your-secret-key'
-heroku config:set DATABASE_URL='your-database-url'
+heroku config:set SECRET_KEY='kjasfkj123894(*##(@@@)@PO@@bfjekjewuO#2u)(UHHj@RO)r(U@!!>?>?:{KR'
+heroku config:set DATABASE_URL='postgresql://neondb_owner:HgbfuWeV1JL6@ep-shy-recipe-a2bwveb5.eu-central-1.aws.neon.tech/gag_squid_print_901885'
 ```
 
 ### 3️⃣ **Push to Heroku**

@@ -2,7 +2,6 @@ from django import forms
 from .models import Task, Category
 
 class TaskForm(forms.ModelForm):
-    
 
     class Meta:
         model = Task
@@ -22,7 +21,7 @@ class TaskForm(forms.ModelForm):
         return instance
     
     
-# forms.py
+
 
 class CategoryForm(forms.ModelForm):
     class Meta:
