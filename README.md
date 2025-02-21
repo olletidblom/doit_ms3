@@ -764,31 +764,166 @@ This Markdown document is structured for easy use. You just need to replace **"W
 
 ## 🚀 Heroku Deployment
 
-### 1️⃣ **Create Heroku App**
+
+
+# 🚀 **Heroku Deployment Guide**
+
+## 🌐 **Deploying Through the Heroku Website**
+[🔗 **Official Heroku Git Deployment Guide**](https://devcenter.heroku.com/articles/git)  
+
+This guide will walk you through deploying your application from GitHub using **Heroku**.
+
+---
+
+### 📝 **1. Create a Heroku Account & Log In**
+1. Visit [**Heroku**](https://heroku.com) and sign up/log in.
+2. Once logged in, navigate to your **dashboard**.
+
+<details>
+<summary>📸 Screenshots</summary>
+<img src="docs/images/heroku/signin.png">
+<img src="docs/images/heroku/signup.png">
+</details>
+
+---
+
+### 🚀 **2. Create a Heroku App**
+1. Click on **"New"** to create an app.
+2. Enter a unique app name (e.g., `doitms3`).
+3. Choose a region that suits you.
+
+<details>
+<summary>📸 Screenshots</summary>
+<img src="docs/images/heroku/dash.png">
+<img src="docs/images/heroku/new.png">
+<img src="docs/images/heroku/create.png">
+</details>
+
+---
+
+### 🔧 **3. Configure Settings**
+1. Go to **Settings**.
+2. Scroll down to **Config Vars** and add:
+   - `DATABASE_URL` (from `settings.py`)
+   - `SECRET_KEY` (from `settings.py`)
+   - `DISABLE_COLLECTSTATIC = 1`
+
+<details>
+<summary>📸 Screenshots</summary>
+<img src="docs/images/heroku/main.png">
+<img src="docs/images/heroku/settings.png">
+<img src="docs/images/heroku/config.png">
+</details>
+
+---
+
+### 💻 **4. Prepare Your Code in VS Code**
+1. Install **Gunicorn**:
+   ```sh
+   pip3 install gunicorn
+   pip3 freeze > requirements.txt
+   ```
+2. Create a **Procfile** in the same directory as `manage.py` with the following content:
+   ```
+   web: gunicorn doit.wsgi
+   ```
+
+<details>
+<summary>📸 Screenshot</summary>
+<img src="docs/images/heroku/procfile.png">
+</details>
+
+3. Update **settings.py**:
+   - Add `'.herokuapp.com'` to `ALLOWED_HOSTS`.
+   - Set `DEBUG = False`.
+
+<details>
+<summary>📸 Screenshots</summary>
+<img src="docs/images/heroku/allowedhost.png">
+<img src="docs/images/heroku/false.png">
+</details>
+
+---
+
+### 🗃️ **5. Run Migrations**
+1. Check migration status:
+   ```sh
+   python3 manage.py showmigrations
+   ```
+2. Apply migrations:
+   ```sh
+   python3 manage.py migrate
+   ```
+
+---
+
+### 🔗 **6. Connect to GitHub & Deploy**
+1. Go to **Deploy** tab in Heroku.
+2. Connect your **GitHub** repository.
+3. Enable **automatic deploys** from the `main` branch (optional).
+4. Click **Deploy**.
+
+<details>
+<summary>📸 Screenshots</summary>
+<img src="docs/images/heroku/main2.png">
+<img src="docs/images/heroku/github.png">
+<img src="docs/images/heroku/deploy.png">
+</details>
+
+---
+
+### ⚡ **7. Manage Dynos**
+1. Check your **dynos**.
+2. Make sure you are using the **ECO** plan.
+
+<details>
+<summary>📸 Screenshots</summary>
+<img src="docs/images/heroku/main3.png">
+<img src="docs/images/heroku/dynos.png">
+</details>
+
+---
+
+### 🌍 **8. Access Your Application**
+1. Click the provided **Heroku link** to access your app.
+2. If you encounter issues, check **Heroku build logs** for troubleshooting.
+
+---
+
+## 📟 **Heroku Deployment via Terminal**
+If you prefer the **command-line approach**, follow these steps:
+
+### 1️⃣ **Create a New Heroku App**
 ```sh
 heroku create doit-todo-app
 ```
 
 ### 2️⃣ **Set Up Environment Variables**
 ```sh
-heroku config:set SECRET_KEY='kjasfkj123894(*##(@@@)@PO@@bfjekjewuO#2u)(UHHj@RO)r(U@!!>?>?:{KR'
-heroku config:set DATABASE_URL='postgresql://neondb_owner:HgbfuWeV1JL6@ep-shy-recipe-a2bwveb5.eu-central-1.aws.neon.tech/gag_squid_print_901885'
+heroku config:set SECRET_KEY='your-secret-key'
+heroku config:set DATABASE_URL='your-database-url'
 ```
 
-### 3️⃣ **Push to Heroku**
+### 3️⃣ **Push Code to Heroku**
 ```sh
 git push heroku main
 ```
 
-### 4️⃣ **Run Migrations**
+### 4️⃣ **Run Database Migrations**
 ```sh
 heroku run python manage.py migrate
 ```
 
-### 5️⃣ **Restart Heroku App**
+### 5️⃣ **Restart the Heroku App**
 ```sh
 heroku restart
 ```
+
+---
+
+### 🎉 **Your App is Now Live on Heroku!**  
+Click the link provided by **Heroku** to see your deployed application in action. 🚀
+
 
 ---
 
